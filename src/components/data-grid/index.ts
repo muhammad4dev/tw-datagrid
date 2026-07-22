@@ -1,6 +1,7 @@
 export { DataGrid } from "./data-grid"
 export { DataGridColumnFilter } from "./data-grid-column-filter"
 export { DataGridPagination } from "./data-grid-pagination"
+export { DataGridRowActions } from "./data-grid-row-actions"
 export { DataGridToolbar } from "./data-grid-toolbar"
 export { defaultGetRowId, getRowValue } from "./get-row-value"
 export {
@@ -19,6 +20,8 @@ export type {
   GridFilterModel,
   GridPaginationModel,
   GridRenderCellParams,
+  GridRowAction,
+  GridRowActionContext,
   GridSortDirection,
   GridSortItem,
   GridSortModel,

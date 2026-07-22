@@ -63,6 +63,20 @@ export type GridBulkAction<T> = {
   onClick: (ctx: GridBulkActionContext<T>) => void
 }
 
+export type GridRowActionContext<T> = {
+  row: T
+  id: string
+}
+
+export type GridRowAction<T> = {
+  id: string
+  label: string
+  /** Used for inline buttons; destructive items styled in the menu too */
+  variant?: "default" | "outline" | "secondary" | "ghost" | "destructive"
+  disabled?: boolean | ((ctx: GridRowActionContext<T>) => boolean)
+  onClick: (ctx: GridRowActionContext<T>) => void
+}
+
 export type DataGridProps<T> = {
   rows: T[]
   columns: GridColDef<T>[]
@@ -92,6 +106,11 @@ export type DataGridProps<T> = {
 
   bulkActions?: GridBulkAction<T>[]
   renderBulkActions?: (ctx: GridBulkActionContext<T>) => React.ReactNode
+
+  rowActions?: GridRowAction<T>[]
+  renderRowActions?: (ctx: GridRowActionContext<T>) => React.ReactNode
+  /** Default: `"menu"` (kebab dropdown). Use `"buttons"` for inline action buttons. */
+  rowActionsDisplay?: "menu" | "buttons"
 
   getDetailPanelContent?: (params: { row: T }) => React.ReactNode
   getRowCanExpand?: (row: T) => boolean

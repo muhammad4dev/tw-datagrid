@@ -23,6 +23,7 @@ import { HugeiconsIcon } from "@hugeicons/react"
 
 import { DataGridColumnFilter } from "./data-grid-column-filter"
 import { DataGridPagination } from "./data-grid-pagination"
+import { DataGridRowActions } from "./data-grid-row-actions"
 import { DataGridToolbar } from "./data-grid-toolbar"
 import { defaultGetRowId, getRowValue } from "./get-row-value"
 import {
@@ -67,6 +68,9 @@ export function DataGrid<T>({
   onRowSelectionModelChange,
   bulkActions,
   renderBulkActions,
+  rowActions,
+  renderRowActions,
+  rowActionsDisplay = "menu",
   getDetailPanelContent,
   getRowCanExpand,
   loading = false,
@@ -172,8 +176,13 @@ export function DataGrid<T>({
 
   const showSelectionColumn =
     checkboxSelection || Boolean(bulkActions?.length) || Boolean(renderBulkActions)
+  const showActionsColumn =
+    Boolean(rowActions?.length) || Boolean(renderRowActions)
   const colSpan =
-    columns.length + (showSelectionColumn ? 1 : 0) + (detailEnabled ? 1 : 0)
+    columns.length +
+    (showSelectionColumn ? 1 : 0) +
+    (detailEnabled ? 1 : 0) +
+    (showActionsColumn ? 1 : 0)
 
   function cycleSort(field: string, sortable: boolean) {
     if (!sortable) return
@@ -330,6 +339,17 @@ export function DataGrid<T>({
                   </TableHead>
                 )
               })}
+              {showActionsColumn ? (
+                <TableHead
+                  className="text-end"
+                  style={{
+                    width: rowActionsDisplay === "buttons" ? undefined : 56,
+                    minWidth: rowActionsDisplay === "buttons" ? 120 : 56,
+                  }}
+                >
+                  Actions
+                </TableHead>
+              ) : null}
             </TableRow>
           </TableHeader>
 
@@ -410,6 +430,22 @@ export function DataGrid<T>({
                           </TableCell>
                         )
                       })}
+                      {showActionsColumn ? (
+                        <TableCell
+                          className="text-end"
+                          style={{
+                            width: rowActionsDisplay === "buttons" ? undefined : 56,
+                            minWidth: rowActionsDisplay === "buttons" ? 120 : 56,
+                          }}
+                        >
+                          <DataGridRowActions
+                            context={{ row, id }}
+                            actions={rowActions ?? []}
+                            display={rowActionsDisplay}
+                            renderRowActions={renderRowActions}
+                          />
+                        </TableCell>
+                      ) : null}
                     </TableRow>
 
                     {expanded && expandable && getDetailPanelContent ? (
