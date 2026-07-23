@@ -1,6 +1,7 @@
 "use client"
 
 import type { ReactNode } from "react"
+import { useTranslations } from "next-intl"
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -27,6 +28,7 @@ export function DataGridToolbar<T>({
   renderBulkActions,
   className,
 }: DataGridToolbarProps<T>) {
+  const t = useTranslations("DataGrid")
   const hasSelection = bulkContext.selectedIds.length > 0
   const showBulk =
     hasSelection && (Boolean(renderBulkActions) || (bulkActions?.length ?? 0) > 0)
@@ -42,16 +44,16 @@ export function DataGridToolbar<T>({
         <Input
           value={quickFilterText}
           onChange={(event) => onQuickFilterTextChange(event.target.value)}
-          placeholder="Search…"
+          placeholder={t("searchPlaceholder")}
           className="ps-9"
-          aria-label="Quick filter"
+          aria-label={t("quickFilter")}
         />
       </div>
 
       {showBulk ? (
         <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-border bg-muted/40 px-3 py-2">
           <p className="text-sm text-muted-foreground">
-            {bulkContext.selectedIds.length} selected
+            {t("selectedCount", { count: bulkContext.selectedIds.length })}
           </p>
           <div className="flex flex-wrap items-center gap-2">
             {renderBulkActions ? (
@@ -83,7 +85,7 @@ export function DataGridToolbar<T>({
                   variant="ghost"
                   onClick={bulkContext.clearSelection}
                 >
-                  Clear
+                  {t("clear")}
                 </Button>
               </>
             )}

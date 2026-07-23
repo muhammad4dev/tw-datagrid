@@ -1,5 +1,7 @@
 "use client"
 
+import { useTranslations } from "next-intl"
+
 import { Button } from "@/components/ui/button"
 import {
   Select,
@@ -29,6 +31,7 @@ export function DataGridPagination({
   rowCount,
   className,
 }: DataGridPaginationProps) {
+  const t = useTranslations("DataGrid")
   const { page, pageSize } = paginationModel
   const pageCount = Math.max(1, Math.ceil(rowCount / pageSize) || 1)
   const currentPage = Math.min(page, pageCount - 1)
@@ -47,7 +50,7 @@ export function DataGridPagination({
       )}
     >
       <div className="flex items-center gap-2">
-        <span>Rows per page</span>
+        <span>{t("rowsPerPage")}</span>
         <Select
           value={String(pageSize)}
           items={pageSizeItems}
@@ -56,7 +59,7 @@ export function DataGridPagination({
             onPaginationModelChange({ page: 0, pageSize: Number(value) })
           }}
         >
-          <SelectTrigger size="sm" aria-label="Rows per page">
+          <SelectTrigger size="sm" aria-label={t("rowsPerPage")}>
             <SelectValue />
           </SelectTrigger>
           <SelectContent alignItemWithTrigger={false}>
@@ -70,15 +73,13 @@ export function DataGridPagination({
       </div>
 
       <div className="flex items-center gap-3">
-        <span>
-          {from}-{to} of {rowCount}
-        </span>
+        <span>{t("paginationRange", { from, to, count: rowCount })}</span>
         <div className="flex items-center gap-1">
           <Button
             type="button"
             size="icon-sm"
             variant="outline"
-            aria-label="Previous page"
+            aria-label={t("previousPage")}
             disabled={currentPage <= 0}
             onClick={() =>
               onPaginationModelChange({ page: currentPage - 1, pageSize })
@@ -94,7 +95,7 @@ export function DataGridPagination({
             type="button"
             size="icon-sm"
             variant="outline"
-            aria-label="Next page"
+            aria-label={t("nextPage")}
             disabled={currentPage >= pageCount - 1}
             onClick={() =>
               onPaginationModelChange({ page: currentPage + 1, pageSize })

@@ -1,5 +1,7 @@
 "use client"
 
+import { useTranslations } from "next-intl"
+
 import { Button, buttonVariants } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
 import {
@@ -28,6 +30,7 @@ export function DataGridColumnFilter({
   selected,
   onChange,
 }: DataGridColumnFilterProps) {
+  const t = useTranslations("DataGrid")
   const activeCount = selected.length
 
   function toggleOption(option: string, checked: boolean) {
@@ -47,7 +50,7 @@ export function DataGridColumnFilter({
           "relative shrink-0",
           activeCount > 0 && "text-foreground"
         )}
-        aria-label={`Filter ${label}`}
+        aria-label={t("filterColumn", { label })}
         onClick={(event) => event.stopPropagation()}
       >
         <HugeiconsIcon
@@ -72,12 +75,14 @@ export function DataGridColumnFilter({
         onClick={(event) => event.stopPropagation()}
       >
         <PopoverHeader className="gap-0">
-          <PopoverTitle className="text-sm">Filter {label}</PopoverTitle>
+          <PopoverTitle className="text-sm">
+            {t("filterColumn", { label })}
+          </PopoverTitle>
         </PopoverHeader>
 
         <div className="flex max-h-56 flex-col gap-2 overflow-y-auto">
           {options.length === 0 ? (
-            <p className="text-sm text-muted-foreground">No options</p>
+            <p className="text-sm text-muted-foreground">{t("noOptions")}</p>
           ) : (
             options.map((option) => {
               const checked = selected.includes(option)
@@ -110,7 +115,7 @@ export function DataGridColumnFilter({
           disabled={activeCount === 0}
           onClick={() => onChange([])}
         >
-          Clear
+          {t("clear")}
         </Button>
       </PopoverContent>
     </Popover>

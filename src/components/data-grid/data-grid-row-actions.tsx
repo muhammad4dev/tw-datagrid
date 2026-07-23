@@ -1,6 +1,7 @@
 "use client"
 
 import type { ReactNode } from "react"
+import { useTranslations } from "next-intl"
 
 import { Button, buttonVariants } from "@/components/ui/button"
 import {
@@ -37,6 +38,8 @@ export function DataGridRowActions<T>({
   display = "menu",
   renderRowActions,
 }: DataGridRowActionsProps<T>) {
+  const t = useTranslations("DataGrid")
+
   if (renderRowActions) {
     return <>{renderRowActions(context)}</>
   }
@@ -78,7 +81,7 @@ export function DataGridRowActions<T>({
             buttonVariants({ variant: "ghost", size: "icon-xs" }),
             "shrink-0"
           )}
-          aria-label="Row actions"
+          aria-label={t("openRowActions")}
         >
           <HugeiconsIcon icon={MoreHorizontalIcon} strokeWidth={2} />
         </DropdownMenuTrigger>

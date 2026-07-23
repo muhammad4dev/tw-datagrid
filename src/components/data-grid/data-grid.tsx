@@ -1,5 +1,6 @@
 "use client"
 
+import { useTranslations } from "next-intl"
 import { Fragment, useState } from "react"
 
 import { Button } from "@/components/ui/button"
@@ -74,9 +75,11 @@ export function DataGrid<T>({
   getDetailPanelContent,
   getRowCanExpand,
   loading = false,
-  emptyMessage = "No rows",
+  emptyMessage: emptyMessageProp,
   className,
 }: DataGridProps<T>) {
+  const t = useTranslations("DataGrid")
+  const emptyMessage = emptyMessageProp ?? t("empty")
   const [internalSortModel, setInternalSortModel] = useState<GridSortModel>([])
   const [internalQuickFilter, setInternalQuickFilter] = useState("")
   const [internalFilterModel, setInternalFilterModel] =
@@ -242,7 +245,7 @@ export function DataGrid<T>({
       <div className="relative rounded-2xl border border-border">
         {loading ? (
           <div className="absolute inset-0 z-10 flex items-center justify-center bg-background/60 text-sm text-muted-foreground">
-            Loading…
+            {t("loading")}
           </div>
         ) : null}
 
@@ -260,7 +263,7 @@ export function DataGrid<T>({
                     onCheckedChange={(checked) =>
                       toggleSelectAllPage(Boolean(checked))
                     }
-                    aria-label="Select all rows on this page"
+                    aria-label={t("selectAllPage")}
                   />
                 </TableHead>
               ) : null}
@@ -347,7 +350,7 @@ export function DataGrid<T>({
                     minWidth: rowActionsDisplay === "buttons" ? 120 : 56,
                   }}
                 >
-                  Actions
+                  {t("actions")}
                 </TableHead>
               ) : null}
             </TableRow>
@@ -380,7 +383,9 @@ export function DataGrid<T>({
                               type="button"
                               size="icon-xs"
                               variant="ghost"
-                              aria-label={expanded ? "Collapse row" : "Expand row"}
+                              aria-label={
+                                expanded ? t("collapseRow") : t("expandRow")
+                              }
                               aria-expanded={expanded}
                               onClick={() => toggleExpanded(id)}
                             >
@@ -403,7 +408,7 @@ export function DataGrid<T>({
                             onCheckedChange={(checked) =>
                               toggleSelectRow(id, Boolean(checked))
                             }
-                            aria-label={`Select row ${id}`}
+                            aria-label={t("selectRow", { id })}
                           />
                         </TableCell>
                       ) : null}
