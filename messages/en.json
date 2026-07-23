@@ -12,6 +12,12 @@
     "tabExpandable": "Expandable",
     "tabFlat": "Flat"
   },
+  "Error": {
+    "title": "Something went wrong",
+    "description": "An unexpected error occurred while rendering this page. You can try again.",
+    "retry": "Try again",
+    "digest": "Error id: {digest}"
+  },
   "Grid": {
     "name": "Name",
     "email": "Email",
