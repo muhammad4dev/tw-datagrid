@@ -1,0 +1,59 @@
+{
+  "Home": {
+    "title": "DataGrid",
+    "description": "MUI-like grid on shadcn — sorting, quick search, column filters, pagination, selection, bulk and row actions, expandable rows, and LTR/RTL with locale-aware API data.",
+    "localeSwitch": "Language: {locale}",
+    "lastActionDefault": "No bulk action yet",
+    "loadError": "Failed to load users: {message}",
+    "exportedUsers": "Exported {count, plural, =1 {# user} other {# users}}: {names}",
+    "deletedUsers": "Deleted {count, plural, =1 {# user} other {# users}}",
+    "editedUser": "Edited {name}",
+    "deletedUser": "Deleted {name}",
+    "tabExpandable": "Expandable",
+    "tabFlat": "Flat"
+  },
+  "Grid": {
+    "name": "Name",
+    "email": "Email",
+    "role": "Role",
+    "status": "Status",
+    "orders": "Orders",
+    "orderId": "Order",
+    "product": "Product",
+    "total": "Total",
+    "actions": "Actions",
+    "ordersFor": "Orders for {name}",
+    "noOrders": "No orders",
+    "emptyUsers": "No rows"
+  },
+  "Actions": {
+    "export": "Export",
+    "delete": "Delete",
+    "edit": "Edit"
+  },
+  "Status": {
+    "active": "active",
+    "invited": "invited",
+    "disabled": "disabled"
+  },
+  "DataGrid": {
+    "rowsPerPage": "Rows per page",
+    "paginationRange": "{from, number}–{to, number} of {count, number}",
+    "previousPage": "Previous page",
+    "nextPage": "Next page",
+    "searchPlaceholder": "Search…",
+    "quickFilter": "Quick filter",
+    "selectedCount": "{count, plural, =1 {# selected} other {# selected}}",
+    "clear": "Clear",
+    "loading": "Loading…",
+    "actions": "Actions",
+    "empty": "No rows",
+    "selectAllPage": "Select all rows on this page",
+    "selectRow": "Select row {id}",
+    "expandRow": "Expand row",
+    "collapseRow": "Collapse row",
+    "filterColumn": "Filter {label}",
+    "noOptions": "No options",
+    "openRowActions": "Open row actions"
+  }
+}

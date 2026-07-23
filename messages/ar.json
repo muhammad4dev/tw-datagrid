@@ -1,0 +1,59 @@
+{
+  "Home": {
+    "title": "DataGrid",
+    "description": "شبكة بيانات بأسلوب MUI على shadcn — فرز، بحث، عوامل تصفية، ترقيم صفحات، تحديد، إجراءات جماعية وصفية، صفوف قابلة للتوسيع، وLTR/RTL مع بيانات عربية عبر الواجهة البرمجية.",
+    "localeSwitch": "اللغة: {locale}",
+    "lastActionDefault": "لا يوجد إجراء بعد",
+    "loadError": "تعذّر تحميل المستخدمين: {message}",
+    "exportedUsers": "تم تصدير {count, plural, =0 {لا مستخدمين} =1 {مستخدم واحد} other {# مستخدمين}}: {names}",
+    "deletedUsers": "تم حذف {count, plural, =0 {لا مستخدمين} =1 {مستخدم واحد} other {# مستخدمين}}",
+    "editedUser": "تم تعديل {name}",
+    "deletedUser": "تم حذف {name}",
+    "tabExpandable": "قابل للتوسيع",
+    "tabFlat": "مسطّح"
+  },
+  "Grid": {
+    "name": "الاسم",
+    "email": "البريد",
+    "role": "الدور",
+    "status": "الحالة",
+    "orders": "الطلبات",
+    "orderId": "الطلب",
+    "product": "المنتج",
+    "total": "الإجمالي",
+    "actions": "إجراءات",
+    "ordersFor": "طلبات {name}",
+    "noOrders": "لا توجد طلبات",
+    "emptyUsers": "لا توجد صفوف"
+  },
+  "Actions": {
+    "export": "تصدير",
+    "delete": "حذف",
+    "edit": "تعديل"
+  },
+  "Status": {
+    "active": "نشط",
+    "invited": "مدعو",
+    "disabled": "معطّل"
+  },
+  "DataGrid": {
+    "rowsPerPage": "عدد الصفوف",
+    "paginationRange": "{from, number}–{to, number} من {count, number}",
+    "previousPage": "الصفحة السابقة",
+    "nextPage": "الصفحة التالية",
+    "searchPlaceholder": "بحث…",
+    "quickFilter": "تصفية سريعة",
+    "selectedCount": "{count, plural, =0 {لا تحديد} =1 {محدد واحد} other {# محدد}}",
+    "clear": "مسح",
+    "loading": "جارٍ التحميل…",
+    "actions": "إجراءات",
+    "empty": "لا توجد صفوف",
+    "selectAllPage": "تحديد كل الصفوف في هذه الصفحة",
+    "selectRow": "تحديد الصف {id}",
+    "expandRow": "توسيع الصف",
+    "collapseRow": "طي الصف",
+    "filterColumn": "تصفية {label}",
+    "noOptions": "لا توجد خيارات",
+    "openRowActions": "فتح إجراءات الصف"
+  }
+}
